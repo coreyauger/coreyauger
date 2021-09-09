@@ -1,45 +1,40 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
-import { TranslateModule } from '@ngx-translate/core';
-import { FuseSharedModule } from '@fuse/shared.module';
-import { AngularMaterialModule } from './../../angular-material/angular-material.module';
-import { GithubService } from '../../../github.service';
-import { MarkdownToHtmlModule } from 'ng2-markdown-to-html';
-import { QuestionComponent } from './question/question.component';
-import { LabComponent } from './lab.component';
-import { QuestionDetailsComponent } from './question-details/question-details.component';
+import { TranslateModule } from "@ngx-translate/core";
+import { FuseSharedModule } from "@fuse/shared.module";
+import { AngularMaterialModule } from "./../../angular-material/angular-material.module";
+import { GithubService } from "../../../github.service";
+import { MarkdownModule } from "ngx-markdown";
+import { QuestionComponent } from "./question/question.component";
+import { LabComponent } from "./lab.component";
+import { QuestionDetailsComponent } from "./question-details/question-details.component";
 
 const routes = [
   {
-      path     : 'questions',
-      component: QuestionComponent
+    path: "questions",
+    component: QuestionComponent,
   },
   {
-    path     : 'lab',
-    component: LabComponent
+    path: "lab",
+    component: LabComponent,
   },
   {
-    path     : 'question/:id',
-    component: QuestionDetailsComponent
+    path: "question/:id",
+    component: QuestionDetailsComponent,
   },
 ];
 
 @NgModule({
   declarations: [QuestionComponent, LabComponent, QuestionDetailsComponent],
   providers: [GithubService],
-  imports     : [
-      RouterModule.forChild(routes),
-      MarkdownToHtmlModule.forRoot(),
-      TranslateModule,
-      FuseSharedModule, 
-      AngularMaterialModule
+  imports: [
+    RouterModule.forChild(routes),
+    MarkdownModule.forRoot(),
+    TranslateModule,
+    FuseSharedModule,
+    AngularMaterialModule,
   ],
-  exports     : [
-    QuestionComponent,
-    LabComponent,
-  ]
+  exports: [QuestionComponent, LabComponent],
 })
-export class LabModule { }
-
-
+export class LabModule {}
